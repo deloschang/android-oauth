@@ -28,20 +28,20 @@ public class WebViewActivity extends Activity {
         
         String name = webView.getTitle();
         Log.d("Title",name);
+        Log.d("URL", url);
         
-        if (url.startsWith(OAuth2ClientCredentials.REDIRECT_URI)){
-          
-          if (url.indexOf("code")!= -1) {
-            String code = extractCodeFromUrl(url);
+//        if (url.startsWith(OAuth2ClientCredentials.REDIRECT_URI)){
+        if (name.startsWith("Success")){
+          Log.d("Title", "yes it matches!");
+            String code = extractCodeFromUrl(name);
             Log.d("HERES THE CODE!!!", code);
-          }
           
         }
       }
       
       // grabs the code from the title header..
-      private String extractCodeFromUrl(String url){
-        return url.substring(OAuth2ClientCredentials.REDIRECT_URI.length()+7, url.length());
+      private String extractCodeFromUrl(String name){
+        return name.substring(13, name.length());
       }
     });
     
